@@ -4,15 +4,11 @@ export const buildTree = <
   T extends { [key in ID | PID]: string }
 >(
   items: T[],
-  options: {
-    idKey: ID;
-    parentKey: PID;
-    rootVal?: string;
-    sort?(a: T, b: T): -1 | 1 | 0;
-  }
+  idKey: ID,
+  parentKey: PID,
+  rootVal?: string,
+  sort?: (a: T, b: T) => -1 | 1 | 0
 ) => {
-  const { idKey, parentKey, rootVal } = options;
-
   type Wrapper = Map<string, T[]>;
   type TreeNode = T & { children?: TreeNode[] };
 
@@ -43,9 +39,13 @@ export const buildTree = <
   const build = (topLevel: T[], wrapper: Wrapper): TreeNode[] => {
     return topLevel.map((item) => {
       if (wrapper.has(item[idKey])) {
+        let children = build(wrapper.get(item[idKey]) as TreeNode[], wrapper);
+        if (sort) {
+          children = children.sort(sort);
+        }
         return {
           ...item,
-          children: build(wrapper.get(item[idKey]) as TreeNode[], wrapper),
+          children,
         };
       } else {
         return item;

@@ -1,4 +1,4 @@
-type TreeNode<CID extends string, T> = T &
+export type TreeNode<CID extends string, T> = T &
   { [key in CID]?: TreeNode<CID, T>[] };
 export const flattenTree = <
   CID extends string,
