@@ -1,0 +1,44 @@
+{
+  "name": "tree-utils",
+  "version": "1.0.0",
+  "description": "tree helper",
+  "module": "dist/tree-utils.esm.js",
+  "main": "dist/tree-utils.js",
+  "types": "dist/tree-utils.d.ts",
+  "scripts": {
+    "watch": "rollup --config rollup.config.js --watch",
+    "build": "rimraf dist/ && rollup --config rollup.config.js",
+    "preversion": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "tree",
+    "javascript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shujer/tree-utils.git"
+  },
+  "homepage": "https://github.com/shujer/tree-utils",
+  "author": {
+    "name": "ephemeron",
+    "email": "dwellerofuniverse@gmail.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@rollup/plugin-node-resolve": "^11.0.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.35.1",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "typescript": "^4.1.3"
+  }
+}
