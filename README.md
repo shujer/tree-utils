@@ -40,3 +40,6 @@ let ans = flattenTree<"children", Item>([
   },
 ]);
 ```
+
+## 代码参考
+[ali-react-table](https://github.com/alibaba/ali-react-table/blob/master/packages/ali-react-table/src/utils/buildTree.tsx)
